@@ -1,20 +1,15 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import { StyledComboboxOption, } from "./style";
+import { StyledComboboxOption } from "./style";
 import ComboBoxContext from "./ComboBoxContext";
 
-
 const ComboboxListOption = (props) => {
-  const {
-    selected,
-    focused,
-    dataItem,
-  } = props;
+  const { selected, focused, dataItem } = props;
   const comboBoxContext = React.useContext(ComboBoxContext);
   const handleSelect = (event) => {
     console.log("options handle select", event);
     comboBoxContext.handleSelect(dataItem, event);
-  }
+  };
 
   return (
     <StyledComboboxOption
@@ -24,8 +19,8 @@ const ComboboxListOption = (props) => {
     >
       {dataItem[comboBoxContext.textField]}
     </StyledComboboxOption>
-  )
-}
+  );
+};
 
 ComboboxListOption.propTypes = {
   activeId: PropTypes.string,
@@ -34,7 +29,7 @@ ComboboxListOption.propTypes = {
   focused: PropTypes.bool,
   selected: PropTypes.bool,
   disabled: PropTypes.bool,
-}
+};
 
 /**
  * Using arrow keys changes the items that are on focus

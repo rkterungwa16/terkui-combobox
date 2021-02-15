@@ -2,31 +2,31 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import { StyledComboboxInput } from "./style";
 
-
 const ComboBoxInput = (props) => {
   const [last, setLast] = React.useState(null);
   const comboBoxInputRef = React.useRef(null);
-  const {
-    onChange,
-    onKeyDown,
-    onKeyUp,
-    value,
-    open
-  } = props;
+  const { onChange, onKeyDown, onKeyUp, value, open } = props;
 
-  const handleChange = React.useCallback((e) => {
-    const latestInputedValue = e.currentTarget.value;
-    setLast(latestInputedValue.split("")[latestInputedValue.length - 1]); // will this cause the component to re-render
-    onChange(e, latestInputedValue);
-  }, [onChange]);
+  const handleChange = React.useCallback(
+    (e) => {
+      const latestInputedValue = e.currentTarget.value;
+      setLast(latestInputedValue.split("")[latestInputedValue.length - 1]); // will this cause the component to re-render
+      onChange(e, latestInputedValue);
+    },
+    [onChange]
+  );
 
   React.useEffect(() => {
-    if (value && last != null && value.toLowerCase().includes(last.toLowerCase())) {
+    if (
+      value &&
+      last != null &&
+      value.toLowerCase().includes(last.toLowerCase())
+    ) {
       const start = value.toLowerCase().indexOf(last.toLowerCase());
       const end = value.length - start;
       if (start >= 0 && end !== 0) {
-        comboBoxInputRef.current.focus()
-        comboBoxInputRef.current.setSelectionRange(start + 1, start + end)
+        comboBoxInputRef.current.focus();
+        comboBoxInputRef.current.setSelectionRange(start + 1, start + end);
       }
     }
   }, [value, last]);
@@ -40,15 +40,15 @@ const ComboBoxInput = (props) => {
       value={value ? value : ""}
       open={open}
     />
-  )
-}
+  );
+};
 
 ComboBoxInput.propTypes = {
   onChange: PropTypes.func,
   onKeyDown: PropTypes.func,
   onKeyUp: PropTypes.func,
   value: PropTypes.string,
-  suggest: PropTypes.bool
-}
+  suggest: PropTypes.bool,
+};
 
 export default ComboBoxInput;

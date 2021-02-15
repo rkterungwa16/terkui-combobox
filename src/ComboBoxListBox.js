@@ -4,39 +4,33 @@ import { StyledComboboxListBox } from "./style";
 import ComboboxListOption from "./ComboBoxListOption";
 
 const mapDataItems = (data, fn) => {
-  return data.map((item, idx) => fn(item, idx, false))
-}
+  return data.map((item, idx) => fn(item, idx, false));
+};
 
 // Map items for data requiring grouping
 
 const ComboBoxListBox = (props) => {
-  const {
-    data,
-    focusedItem,
-    open,
-  } = props;
+  const { data, focusedItem, open } = props;
   return (
     <StyledComboboxListBox aria-live={open && "polite"}>
-      {
-        mapDataItems(data, (item, idx) => {
-          return (
-            <ComboboxListOption
-              key={`option_${idx}`}
-              dataItem={item}
-              focused={focusedItem === item} // Why so? is it based on reference?
-            />
-          )
-        })
-      }
+      {mapDataItems(data, (item, idx) => {
+        return (
+          <ComboboxListOption
+            key={`option_${idx}`}
+            dataItem={item}
+            focused={focusedItem === item} // Why so? is it based on reference?
+          />
+        );
+      })}
     </StyledComboboxListBox>
-  )
-}
+  );
+};
 
 ComboBoxListBox.propTypes = {
   data: PropTypes.array,
   focusedItem: PropTypes.any,
   selectedItem: PropTypes.any,
   searchTerm: PropTypes.string,
-}
+};
 
 export default ComboBoxListBox;
