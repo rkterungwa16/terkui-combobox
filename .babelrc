@@ -1,9 +1,3 @@
 {
-  "plugins": [
-    "prettier"
-  ],
-  "rules": {
-    "prettier/prettier": "error"
-  },
-  "parser": "babel-eslint"
+  "presets": ["@babel/env", "@babel/preset-react"]
 }

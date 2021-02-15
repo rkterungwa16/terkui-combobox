@@ -7,7 +7,6 @@ const ComboboxListOption = (props) => {
   const { selected, focused, dataItem } = props;
   const comboBoxContext = React.useContext(ComboBoxContext);
   const handleSelect = (event) => {
-    console.log("options handle select", event);
     comboBoxContext.handleSelect(dataItem, event);
   };
 

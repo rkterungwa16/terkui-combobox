@@ -13,12 +13,12 @@ export const StyledComboboxInput = styled.input.attrs((props) => ({
 }))`
   ${(props) => {
     return `
-            ${
-              props.open
-                ? "border-radius: 10px 10px 0px 0px;"
-                : "border-radius: 10px;"
-            }
-        `;
+      ${
+        props.open
+          ? "border-radius: 10px 10px 0px 0px;"
+          : "border-radius: 10px;"
+      }
+    `;
   }}
   height: 3rem;
   width: 370px;
@@ -85,18 +85,18 @@ StyledComboboxListBox.defaultProps = {
 
 const focusStyles = {
   true: `
-        background-color: transparent;
-        border: 1px solid;
-        color: #333;
+    background-color: transparent;
+    border: 1px solid;
+    color: #333;
     `,
   false: "",
 };
 
 const selectStyles = {
   true: `
-        background-color: #eee;
-        border-color: #eee;
-        color: #fff;
+    background-color: #eee;
+    border-color: #eee;
+    color: #fff;
     `,
 };
 export const StyledComboboxOption = styled.li.attrs((props) => ({
@@ -120,9 +120,9 @@ export const StyledComboboxOption = styled.li.attrs((props) => ({
   cursor: pointer;
   ${(props) => {
     return `
-           ${focusStyles[props.focused]} 
-           ${selectStyles[props.selected]}
-        `;
+      ${focusStyles[props.focused]}
+      ${selectStyles[props.selected]}
+    `;
   }}
   :hover {
     background-color: rgba(255, 122, 122, 0.15);
