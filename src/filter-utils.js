@@ -33,14 +33,28 @@ export function suggest(data, { searchTerm = "", ...options }) {
   return searchTerm;
 }
 
+/**
+ * Navigate to the previous item on the list of items in an array
+ * When we reach the start of the list navigate back to the end of the list
+ * @param {Object} item
+ * @param {Array<Object>} data
+ *
+ * @return {Object} then previous item on the list
+ */
 export const prev = (item, data) => {
-  let nextIdx = data.indexOf(item) - 1;
-  if (nextIdx >= 0) return data[nextIdx];
+  const nextIdx = data.indexOf(item) - 1
+  if (nextIdx >= 0) return data[nextIdx]
   return data[data.length - 1];
-};
+}
 
+/**
+* Navigate to the next item on the list of items in an array
+* When we reach the end of the list navigate back to the begining of the list
+* @param {Object} item
+* @param {Array<Object>} data
+*/
 export const next = (item, data) => {
-  let nextIdx = data.indexOf(item) + 1;
+  const nextIdx = data.indexOf(item) + 1;
   if (nextIdx < data.length) return data[nextIdx];
   return data[0];
-};
+}
