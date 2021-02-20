@@ -45,7 +45,7 @@ StyledComboboxInput.defaultProps = {
   autocapitalize: "off",
   maxlength: "2048",
   tabindex: "1",
-  placeholder: "search country",
+  placeholder: "search...",
   role: "combobox",
   "aria-owns": "cb_listbox",
   "aria-busy": "false",
