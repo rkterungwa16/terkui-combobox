@@ -13,10 +13,11 @@
     "format": "prettier --write \"src/**/*.js\"",
     "prebuild": "rimraf build",
     "prepublish": "npm run build",
-    "test": "jest",
+    "test": "npm run unit:test && npm run integration:test",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "cypress": "cypress run"
+    "integration:test": "cypress run",
+    "unit:test": "jest"
   },
   "repository": {
     "type": "git",
