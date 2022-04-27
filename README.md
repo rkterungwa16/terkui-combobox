@@ -90,7 +90,7 @@ export default ComboboxExample;
 
  - Description
    - Enter input values. Data items that correspond to those values based on the filter type will be returned.
-   - If types is "startsWith", the filtered data items returned will be those that have values that starts with similar characters
+   - If types is "startsWith", the filtered data items returned will be those that have values that starts with similar characters.
 
 - **minLength**:
     - the number of input values that filter comparisons start being made.
