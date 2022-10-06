@@ -37,9 +37,6 @@ const Combobox = (props) => {
         filter: suggest,
         caseSensitive,
       });
-
-      console.log("currentItem", currentItem);
-      console.log("value", value);
       setFocusedItem(currentItem);
     }
     if (isDeleting) {
