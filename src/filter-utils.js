@@ -74,8 +74,8 @@ export function suggest(data, { searchTerm = "", ...options }) {
  * @return {Object} then previous item on the list
  */
 export const prev = (item, data) => {
-  const nextIdx = data.indexOf(item) - 1;
-  if (nextIdx >= 0) return data[nextIdx];
+  const nextId = data.indexOf(item) - 1;
+  if (nextId >= 0) return data[nextId];
   return data[data.length - 1];
 };
 
@@ -86,7 +86,7 @@ export const prev = (item, data) => {
  * @param {Array<Object>} data
  */
 export const next = (item, data) => {
-  const nextIdx = data.indexOf(item) + 1;
-  if (nextIdx < data.length) return data[nextIdx];
+  const nextId = data.indexOf(item) + 1;
+  if (nextId < data.length) return data[nextId];
   return data[0];
 };

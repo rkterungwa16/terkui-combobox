@@ -8,23 +8,20 @@ import ComboBoxListBox from "./ComboBoxListBox";
 import ComboBoxInput from "./ComboBoxInput";
 import { useClickOutside } from "./useClickOutside";
 
-const Combobox = (props) => {
-  const { value, data, caseSensitive, textField, valueField, suggest } = props;
-  const [currentValue, setCurrentValue] = React.useState("");
+const Combobox = ({
+  value,
+  data,
+  caseSensitive,
+  textField,
+  valueField,
+  suggest,
+}) => {
+  const [currentValue, setCurrentValue] = React.useState(value);
   const [open, setOpen] = React.useState(false);
   const [focusedItem, setFocusedItem] = React.useState(data[0]);
   const [isDeleting, setIsDeleting] = React.useState(false);
 
   const comboBoxRef = React.useRef(null);
-
-  /**
-   * Set value on first render
-   */
-  React.useEffect(() => {
-    if (!currentValue && value) {
-      setCurrentValue(value);
-    }
-  }, [currentValue, value]);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -77,11 +74,21 @@ const Combobox = (props) => {
     }
 
     if (key === "ArrowDown") {
-      setFocusedItem(Filter.next(focusedItem, data));
+      if (focusedItem) {
+        setFocusedItem(Filter.next(focusedItem, data));
+      }
+      if (!focusedItem) {
+        setFocusedItem(data[0]);
+      }
     }
 
     if (key === "ArrowUp") {
-      setFocusedItem(Filter.prev(focusedItem, data));
+      if (focusedItem) {
+        setFocusedItem(Filter.prev(focusedItem, data));
+      }
+      if (!focusedItem) {
+        setFocusedItem(data[data.length - 1]);
+      }
     }
   };
 
@@ -97,10 +104,6 @@ const Combobox = (props) => {
     setOpen(true);
   };
 
-  // const onBlur = (e) => {
-  //   setOpen(false);
-  // };
-
   const handleListCloseClick = (e) => {
     setOpen(false);
   };
@@ -113,7 +116,6 @@ const Combobox = (props) => {
         ref={comboBoxRef}
         onClick={toggle}
         onFocus={onFocus}
-        // onBlur={onBlur}
         onKeyDown={handleKeyDown}
       >
         <ComboBoxInput

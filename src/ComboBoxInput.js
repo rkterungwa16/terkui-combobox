@@ -10,7 +10,7 @@ const ComboBoxInput = (props) => {
   const handleChange = React.useCallback(
     (e) => {
       const latestInputedValue = e.currentTarget.value;
-      setLast(latestInputedValue.split("")[latestInputedValue.length - 1]); // will this cause the component to re-render
+      setLast(latestInputedValue.split("")[latestInputedValue.length - 1]);
       onChange(e, latestInputedValue);
     },
     [onChange]
@@ -19,7 +19,7 @@ const ComboBoxInput = (props) => {
   React.useEffect(() => {
     if (
       value &&
-      last != null &&
+      last &&
       value.toLowerCase().includes(last.toLowerCase())
     ) {
       const start = value.toLowerCase().indexOf(last.toLowerCase());
@@ -31,6 +31,7 @@ const ComboBoxInput = (props) => {
     }
   }, [value, last]);
 
+  console.log('value, last', value, last);
   return (
     <StyledComboboxInput
       onKeyDown={onKeyDown}
