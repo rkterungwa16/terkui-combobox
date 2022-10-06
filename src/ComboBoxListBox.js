@@ -2,6 +2,7 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import { StyledComboboxListBox } from "./style";
 import ComboboxListOption from "./ComboBoxListOption";
+import { useClickOutside } from "./useClickOutside";
 
 const mapDataItems = (data, fn) => {
   return data.map((item, idx) => fn(item, idx, false));
@@ -10,7 +11,7 @@ const mapDataItems = (data, fn) => {
 // Map items for data requiring grouping
 
 const ComboBoxListBox = (props) => {
-  const { data, focusedItem, open } = props;
+  const { data, focusedItem, open} = props;
   return (
     <StyledComboboxListBox aria-live={open && "polite"}>
       {mapDataItems(data, (item, idx) => {
@@ -31,6 +32,7 @@ ComboBoxListBox.propTypes = {
   focusedItem: PropTypes.any,
   selectedItem: PropTypes.any,
   searchTerm: PropTypes.string,
+  handleListCloseClick: PropTypes.func,
 };
 
 export default ComboBoxListBox;

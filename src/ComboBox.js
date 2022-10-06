@@ -6,6 +6,7 @@ import { StyledComboboxWrapper } from "./style";
 
 import ComboBoxListBox from "./ComboBoxListBox";
 import ComboBoxInput from "./ComboBoxInput";
+import { useClickOutside } from "./useClickOutside";
 
 const Combobox = (props) => {
   const { value, data, caseSensitive, textField, valueField, suggest } = props;
@@ -37,6 +38,8 @@ const Combobox = (props) => {
         caseSensitive,
       });
 
+      console.log("currentItem", currentItem);
+      console.log("value", value);
       setFocusedItem(currentItem);
     }
     if (isDeleting) {
@@ -97,9 +100,15 @@ const Combobox = (props) => {
     setOpen(true);
   };
 
-  const onBlur = (e) => {
+  // const onBlur = (e) => {
+  //   setOpen(false);
+  // };
+
+  const handleListCloseClick = (e) => {
     setOpen(false);
   };
+
+  useClickOutside(comboBoxRef, handleListCloseClick);
 
   return (
     <ComboBoxContext.Provider value={{ textField, valueField, handleSelect }}>
@@ -107,7 +116,7 @@ const Combobox = (props) => {
         ref={comboBoxRef}
         onClick={toggle}
         onFocus={onFocus}
-        onBlur={onBlur}
+        // onBlur={onBlur}
         onKeyDown={handleKeyDown}
       >
         <ComboBoxInput
@@ -118,7 +127,12 @@ const Combobox = (props) => {
           onKeyUp={handleKeyInputUp}
         />
         {open && (
-          <ComboBoxListBox open={open} focusedItem={focusedItem} data={data} />
+          <ComboBoxListBox
+            handleListCloseClick={handleListCloseClick}
+            open={open}
+            focusedItem={focusedItem}
+            data={data}
+          />
         )}
       </StyledComboboxWrapper>
     </ComboBoxContext.Provider>
