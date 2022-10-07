@@ -40,6 +40,8 @@ npm test
 
 ## Usage
 
+[<img src="./read-me/cypress-recording.gif">]("/read-me/cypress-recording.gif")
+
 ```js
 import React from "react";
 import Combobox from "../ComboBox/ComboBox";
