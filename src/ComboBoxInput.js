@@ -31,7 +31,6 @@ const ComboBoxInput = (props) => {
     }
   }, [value, last]);
 
-  console.log('value, last', value, last);
   return (
     <StyledComboboxInput
       onKeyDown={onKeyDown}

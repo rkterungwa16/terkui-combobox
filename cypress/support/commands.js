@@ -23,7 +23,7 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
-
+// "cypress": "^6.5.0",
 Cypress.Commands.add('visitStory', (id) => {
   return cy.visit(`/iframe.html?id=${id}`, { log: false });
 });
