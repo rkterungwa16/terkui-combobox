@@ -15,7 +15,11 @@
 /**
  * @type {Cypress.PluginConfig}
  */
-module.exports = (on, config) => {
+const pluginsConfig = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
-}
+
+  return config;
+};
+
+export default pluginsConfig;

@@ -1,12 +1,25 @@
-const { defineConfig } = require("cypress");
+import { defineConfig } from "cypress";
 
-module.exports = defineConfig({
+export default defineConfig({
   e2e: {
-    // We've imported your old cypress plugins here.
-    // You may want to clean this up later by importing these.
     setupNodeEvents(on, config) {
-      return require("./cypress/plugins/index.js")(on, config);
+      // Import plugins index file
+      // eslint-disable-next-line global-require
+      return import("./cypress/plugins/index.js").then((module) => {
+        return module.default(on, config);
+      });
     },
     baseUrl: "http://localhost:6006/",
+    specPattern: "cypress/e2e/**/*.cy.{js,jsx}",
+    supportFile: "cypress/support/e2e.js",
+    videosFolder: "cypress/videos",
+    screenshotsFolder: "cypress/screenshots",
+    downloadsFolder: "cypress/downloads",
+  },
+  component: {
+    devServer: {
+      framework: "react",
+      bundler: "webpack",
+    },
   },
 });
